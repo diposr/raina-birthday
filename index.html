@@ -1,34 +1,21 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+
+<!doctype html><html><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Happy Birthday Snowball</title>
 <link rel="stylesheet" href="style.css">
-</head>
-<body>
+</head><body>
 <div class="container">
-  <div class="card center" role="main">
-    <h1>Happy Birthday Snowball</h1>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-      <img src="assets/gift.png" alt="gift" class="gift" id="gift"/>
-      <div class="tap-text">Tap the gift 🎁</div>
-    </div>
-  </div>
+<div class="card">
+<h1>Happy Birthday Snowball</h1>
+<img src="assets/gift.png" class="gift" id="gift">
+<br><img src="assets/cat.png" class="cat" id="cat">
+<p>Tap the gift 🎁</p>
+<div class="footer">made by love Dipo Syahid Ramadhan</div>
+</div>
 </div>
 <script src="hearts.js"></script>
+<script src="flowers.js"></script>
 <script>
-// On tap, animate gift and navigate
-const gift = document.getElementById('gift');
-gift.addEventListener('click', function(e){
-  // add bounce class
-  gift.classList.add('bounce');
-  // navigate after animation finishes
-  setTimeout(()=>{ window.location.href='ucapan.html'; }, 600);
-});
-// Make enter/space keyboard activate
-gift.setAttribute('tabindex', '0');
-gift.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ gift.click(); } });
+document.getElementById("gift").onclick=()=>location.href="ucapan.html";
 </script>
-</body>
-</html>
+</body></html>
