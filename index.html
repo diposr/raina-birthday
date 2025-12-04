@@ -1,17 +1,45 @@
-<!DOCTYPE html><html><head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css"><script src="hearts.js" defer></script>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <title>Happy Birthday Snowball</title>
-</head><body>
-<div class="card">
-<h1>Happy Birthday Snowball</h1>
-<img id="gift" src="assets/gift.png" class="gift-icon">
-<div id="cat-emoji" class="emoji">🎁</div>
-<p>Tap the gift 🎁</p>
-<footer>made by love Dipo Syahid Ramadhan</footer>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="container">
+  <div class="card" role="main">
+    <h1>Happy Birthday Snowball</h1>
+    <!-- Proper gift image -->
+    <img id="gift" src="assets/gift.png" alt="gift" class="gift-img"/>
+    <!-- emoji used instead of cat icon to avoid broken image -->
+    <div id="cat-emoji" class="emoji-gift" role="button" aria-label="gift emoji">🎁</div>
+    <p class="small">Tap the gift 🎁</p>
+  </div>
 </div>
+
+<footer class="footer">MADE BY LOVE<br>DIPO SYAHID RAMADHAN</footer>
+
+<script src="hearts.js"></script>
 <script>
-document.getElementById("gift").onclick=()=>location.href='ucapan.html';
-document.getElementById("cat-emoji").onclick=()=>spawnFlowers();
+(function(){
+  const gift = document.getElementById('gift');
+  gift.addEventListener('click', ()=>{
+    gift.classList.add('bounce');
+    setTimeout(()=> location.href='ucapan.html', 420);
+  });
+  const catEmoji = document.getElementById('cat-emoji');
+  function tapCat(e){
+    const rect = catEmoji.getBoundingClientRect();
+    const x = rect.left + rect.width/2;
+    const y = rect.top + rect.height/2;
+    if(window.spawnFlowers) window.spawnFlowers(x,y);
+    catEmoji.style.transform='scale(1.04)';
+    setTimeout(()=> catEmoji.style.transform='', 220);
+  }
+  catEmoji.addEventListener('click', tapCat);
+  catEmoji.addEventListener('touchend', function(e){ e.preventDefault(); tapCat(e); }, {passive:false});
+})();
 </script>
-</body></html>
+</body>
+</html>
