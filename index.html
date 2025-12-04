@@ -1,21 +1,51 @@
-
-<!doctype html><html><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Happy Birthday Snowball</title>
-<link rel="stylesheet" href="style.css">
-</head><body>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
 <div class="container">
-<div class="card">
-<h1>Happy Birthday Snowball</h1>
-<img src="assets/gift.png" class="gift" id="gift">
-<br><img src="assets/cat.png" class="cat" id="cat">
-<p>Tap the gift 🎁</p>
-<div class="footer">made by love Dipo Syahid Ramadhan</div>
+  <div class="card">
+    <h1>Happy Birthday Snowball</h1>
+    <img src="assets/gift.png" alt="Gift" class="gift" id="gift" />
+    <img src="assets/cat.png" alt="Cat" class="cat" id="cat" />
+    <p>Tap the gift 🎁</p>
+  </div>
 </div>
-</div>
+
+<footer class="footer">MADE BY LOVE · DIPO SYAHID RAMADHAN</footer>
+
 <script src="hearts.js"></script>
-<script src="flowers.js"></script>
 <script>
-document.getElementById("gift").onclick=()=>location.href="ucapan.html";
+// navigation & interactivity for index
+(function(){
+  const gift = document.getElementById("gift");
+  gift.addEventListener("click", ()=>{
+    // small bounce then navigate
+    gift.classList.add("bounce");
+    setTimeout(()=> {
+      try{ window.location.href = "ucapan.html"; } catch(e){ }
+    }, 420);
+  });
+
+  // cat: spawn flowers when tapped. For iPhone Safari better to use touchend.
+  const cat = document.getElementById("cat");
+  function handleCatTap(e){
+    // get viewport coordinates
+    const rect = cat.getBoundingClientRect();
+    const x = rect.left + rect.width/2;
+    const y = rect.top + rect.height/2;
+    if(window.spawnFlowers) window.spawnFlowers(x,y);
+    // subtle visual feedback
+    cat.style.transform = "scale(1.04)";
+    setTimeout(()=> cat.style.transform = "", 220);
+  }
+  cat.addEventListener("click", handleCatTap);
+  cat.addEventListener("touchend", function(e){ e.preventDefault(); handleCatTap(e); }, {passive:false});
+})();
 </script>
-</body></html>
+</body>
+</html>
