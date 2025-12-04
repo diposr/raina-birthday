@@ -3,7 +3,7 @@ const h=document.createElement('div');
 h.textContent='💗';
 h.style.position='fixed';
 h.style.left=Math.random()*100+'vw';
-h.style.bottom='0px';
+h.style.bottom='0';
 h.style.fontSize='24px';
 h.style.opacity='1';
 h.style.transition='all 3s linear';
@@ -12,7 +12,6 @@ setTimeout(()=>{h.style.transform='translateY(-300px)';h.style.opacity='0';},10)
 setTimeout(()=>h.remove(),3100);
 }
 setInterval(spawnHeart,700);
-
 function spawnFlowers(){
 const f=document.createElement('div');
 f.textContent='🌸';
